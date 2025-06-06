@@ -9,4 +9,5 @@ class MascotaAdmin(admin.ModelAdmin):
     search_fields = ('nombre', 'raza')
     readonly_fields = ('fecha_ingreso',)
 
+
 admin.site.register(Mascota, MascotaAdmin)
