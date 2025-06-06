@@ -9,5 +9,4 @@ class MascotaAdmin(admin.ModelAdmin):
     search_fields = ('nombre', 'raza')
     readonly_fields = ('fecha_ingreso',)
 
-# Registra el modelo Mascota con la clase MascotaAdmin
 admin.site.register(Mascota, MascotaAdmin)
