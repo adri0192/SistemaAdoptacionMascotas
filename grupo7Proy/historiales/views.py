@@ -19,4 +19,3 @@ def historial_nuevo(request, mascota_id):
     else:
         form = HistorialMedicoForm()
     return render(request, 'historial_form.html', {'form': form, 'mascota': mascota})
-
