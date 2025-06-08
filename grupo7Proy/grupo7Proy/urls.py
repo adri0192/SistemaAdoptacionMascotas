@@ -22,4 +22,6 @@ urlpatterns = [
     path('', include('mascotas.urls')),
     #path('', include('solicitudes.urls')),
     path('', include('usuarios.urls')),
+    path('', include('historiales.urls')),
+    
 ]
