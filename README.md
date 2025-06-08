@@ -88,12 +88,12 @@ py \manage.py migrate
 py \manage.py runserver
 
  
-Visita: http://127.0.0.1:8000/
+`<Visita:>` : <http://127.0.0.1:8000/>
 ```
 ---
 ## 🔐Acceso al panel de Administración
 ```Puedes acceder al padel de administración de Django en:
-http://127.0.0.1:8000/admin/
+`<link>` : http://127.0.0.1:8000/admin/
 ```
 ---
 ## 🌐Estructura base
