@@ -15,11 +15,11 @@ class Usuario(AbstractUser):
     
     def has_module_perms(self, app_label):
         """Solo los admins pueden acceder al panel de Django"""
-        return self.is_active and (self.is_superuser or self.rol == 'admin')
+        return self.is_active and self.rol == 'admin'
 
     def has_perm(self, perm, obj=None):
-        """Solo los admins y superusuarios tienen permisos en el panel de Django"""
-        return self.is_active and (self.is_superuser or self.rol == 'admin')
+        """Solo los admins tienen permisos en el panel de Django"""
+        return self.is_active and self.rol == 'admin'
     
     def __str__(self):
         return f"{self.first_name} {self.last_name} ({self.username})"

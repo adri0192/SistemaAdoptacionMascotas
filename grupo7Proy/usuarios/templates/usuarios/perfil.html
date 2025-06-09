@@ -15,6 +15,7 @@
     <p><strong>Rol:</strong> {{ user.get_rol_display }}</p>
     <p><strong>Fecha de registro:</strong> {{ user.fecha_registro|date:"d/m/Y" }}</p>
 </div>
+
 <div>
     <h3>Estadísticas</h3>
     <p><strong>Solicitudes enviadas:</strong> {{ user.solicitudadopcion_set.count }}</p>
