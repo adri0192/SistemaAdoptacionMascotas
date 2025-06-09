@@ -23,9 +23,12 @@ urlpatterns = [
     path('', RedirectView.as_view(url='/mascotas/', permanent=False)),
     path('usuarios/', include('usuarios.urls')),
     path('mascotas/', include('mascotas.urls')),
+    path('solicitudes/', include('solicitudes.urls')),
+    path('historiales/', include('historiales.urls')),
 ]
 
 # Handler personalizado para 404
 def handler404(request, exception):
     from django.shortcuts import render
     return render(request, '404.html', status=404)
+
