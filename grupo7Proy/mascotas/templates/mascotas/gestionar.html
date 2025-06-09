@@ -1,3 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}Gestionar Mascotas{% endblock %}
+
+{% block content %}
+<h1>Gestionar Mascotas</h1>
+
 <a href="{% url 'mascotas:agregar' %}">Agregar Nueva Mascota</a>
 
 <table class="datatable">

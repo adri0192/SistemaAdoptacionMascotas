@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Historial Médico{% endblock %}
+
+{% block content %}
+<h1>Historial Médico</h1>
+
+<div>
+    <h3>Filtros</h3>
+    <form method="get">
+        <div>
+            <label for="{{ form.especie.id_for_label }}">Especie:</label>
+            {{ form.especie }}
+        </div>
+        <div>
+            <label for="{{ form.mascota.id_for_label }}">Mascota:</label>
+            {{ form.mascota }}
+        </div>
+        <div>
+            <button type="submit">Filtrar</button>
+        </div>
+    </form>
+</div>
+
+{% if user.rol == 'admin' %}
+    <a href="{% url 'historiales:agregar' %}">Agregar Historial Médico</a>
+{% endif %}
+
+{% if historiales %}
+    <table class="datatable">
+        <thead>
+            <tr>
+                <th>Mascota</th>
+                <th>Fecha</th>
+                <th>Descripción</th>
+                <th>Tratamiento</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for historial in historiales %}
+                <tr>
+                    <td>{{ historial.mascota.nombre }} ({{ historial.mascota.get_especie_display }})</td>
+                    <td>{{ historial.fecha|date:"d/m/Y H:i" }}</td>
+                    <td>{{ historial.descripcion }}</td>
+                    <td>{{ historial.tratamiento }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No se encontraron registros médicos.</p>
+{% endif %}
+{% endblock %}

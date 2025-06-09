@@ -27,6 +27,21 @@
                 <li><a href="{% url 'usuarios:perfil' %}">👤 Mi Perfil</a></li>
             </ul>
             
+            <div class="section-title">Adopción</div>
+            <ul>
+                <li><a href="{% url 'solicitudes:mis_solicitudes' %}">📝 Mis Solicitudes</a></li>
+                <li><a href="{% url 'historiales:lista' %}">📋 Historial Médico</a></li>
+            </ul>
+            
+            {% if user.rol == 'admin' %}
+                <div class="section-title">Administración</div>
+                <ul>
+                    <li><a href="{% url 'usuarios:panel_admin' %}">⚙️ Panel Admin</a></li>
+                    <li><a href="{% url 'mascotas:gestionar' %}">🐕 Gestionar Mascotas</a></li>
+                    <li><a href="{% url 'solicitudes:gestionar' %}">📋 Gestionar Solicitudes</a></li>
+                    <li><a href="/admin/" target="_blank">🔧 Admin Django</a></li>
+                </ul>
+            {% endif %}
         </div>
 
         <!-- Main Content -->
