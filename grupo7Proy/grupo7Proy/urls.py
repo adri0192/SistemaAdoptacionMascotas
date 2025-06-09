@@ -15,7 +15,3 @@ urlpatterns = [
 def handler404(request, exception):
     from django.shortcuts import render
     return render(request, '404.html', status=404)
-<<<<<<< HEAD
-=======
-
->>>>>>> eaa5a75c136559a726cced88bb94f002df4eb4f5
