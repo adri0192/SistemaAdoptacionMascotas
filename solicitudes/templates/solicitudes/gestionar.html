@@ -1,46 +1,39 @@
-{% extends 'base.html' %}
-
-{% block title %}Gestionar Solicitudes{% endblock %}
-
-{% block content %}
-<h1>Gestionar Solicitudes de Adopción</h1>
+<a href="{% url 'mascotas:agregar' %}">Agregar Nueva Mascota</a>
 
 <table class="datatable">
     <thead>
         <tr>
-            <th>Usuario</th>
-            <th>Mascota</th>
-            <th>Fecha Solicitud</th>
+            <th>Nombre</th>
+            <th>Especie</th>
+            <th>Raza</th>
+            <th>Edad</th>
+            <th>Sexo</th>
             <th>Estado</th>
-            <th>Observaciones</th>
+            <th>Fecha Ingreso</th>
+            <th>Adoptante</th>
             <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
-        {% for solicitud in solicitudes %}
+        {% for mascota in mascotas %}
             <tr>
-                <td>{{ solicitud.usuario.get_full_name }} ({{ solicitud.usuario.username }})</td>
+                <td>{{ mascota.nombre }}</td>
+                <td>{{ mascota.get_especie_display }}</td>
+                <td>{{ mascota.raza }}</td>
+                <td>{{ mascota.edad }} años</td>
+                <td>{{ mascota.get_sexo_display }}</td>
+                <td>{{ mascota.get_estado_adopcion_display }}</td>
+                <td>{{ mascota.fecha_ingreso|date:"d/m/Y" }}</td>
                 <td>
-                    <a href="{% url 'mascotas:detalle' solicitud.mascota.id %}">
-                        {{ solicitud.mascota.nombre }}
-                    </a>
-                </td>
-                <td>{{ solicitud.fecha_solicitud|date:"d/m/Y H:i" }}</td>
-                <td>{{ solicitud.get_estado_display }}</td>
-                <td>{{ solicitud.observaciones|default:"Sin observaciones" }}</td>
-                <td>
-                    {% if solicitud.estado == 'pendiente' %}
-                        <a href="{% url 'solicitudes:procesar' solicitud.id 'aprobar' %}" 
-                           onclick="return confirm('¿Aprobar esta solicitud? Esto adoptará la mascota y rechazará las demás solicitudes.')">
-                           Aprobar
-                        </a>
-                        <a href="{% url 'solicitudes:procesar' solicitud.id 'rechazar' %}" 
-                           onclick="return confirm('¿Rechazar esta solicitud?')">
-                           Rechazar
-                        </a>
+                    {% if mascota.adoptante %}
+                        {{ mascota.adoptante.get_full_name }}
                     {% else %}
                         -
                     {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'mascotas:detalle' mascota.id %}">Ver</a>
+                    <a href="{% url 'mascotas:editar' mascota.id %}">Editar</a>
                 </td>
             </tr>
         {% endfor %}
