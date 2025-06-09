@@ -73,8 +73,8 @@ env\Scripts\activate
 ```
 3. Instalar las dependencias
 ```
-	pip install -r requirements.txt
-	cd grupo7Proy
+pip install -r requirements.txt
+cd grupo7Proy
 ## ⚙️ Configurar la base de datos
 ```
 4. Ejecutar migraciones
@@ -97,6 +97,9 @@ Puedes acceder al padel de administración de Django en:
 ## 🌐Estructura base
 <h1 align = "center">
   <img src="static/img/estructura.png">
+</h1>
+## ⛓️‍💥 Diagrama Base de Datos
+<h1 align = "center">
   <img src="static/img/diagramaBD.png">
 </h1>
 
