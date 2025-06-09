@@ -5,7 +5,7 @@ from django.contrib import messages
 from .forms import RegistroUsuarioForm
 from .models import Usuario
 from mascotas.models import Mascota
-#from solicitudes.models import SolicitudAdopcion
+from solicitudes.models import SolicitudAdopcion
 
 def es_admin(user):
     return user.is_authenticated and user.rol == 'admin'
@@ -32,7 +32,7 @@ def panel_admin(request):
         'total_mascotas': Mascota.objects.count(),
         'mascotas_disponibles': Mascota.objects.filter(estado_adopcion='disponible').count(),
         'mascotas_adoptadas': Mascota.objects.filter(estado_adopcion='adoptado').count(),
-        #'solicitudes_pendientes': SolicitudAdopcion.objects.filter(estado='pendiente').count(),
+        'solicitudes_pendientes': SolicitudAdopcion.objects.filter(estado='pendiente').count(),
         'total_usuarios': Usuario.objects.count(),
     }
     return render(request, 'usuarios/panel_admin.html', {'stats': stats})
