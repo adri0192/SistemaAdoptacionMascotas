@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Solicitar Adopción - {{ mascota.nombre }}{% endblock %}
+
+{% block content %}
+<h1>Solicitar Adopción de {{ mascota.nombre }}</h1>
+
+<div>
+    <div>
+        <h3>Información de la Mascota</h3>
+        <p><strong>Nombre:</strong> {{ mascota.nombre }}</p>
+        <p><strong>Especie:</strong> {{ mascota.get_especie_display }}</p>
+        <p><strong>Raza:</strong> {{ mascota.raza }}</p>
+        <p><strong>Edad:</strong> {{ mascota.edad }} años</p>
+        <p><strong>Sexo:</strong> {{ mascota.get_sexo_display }}</p>
+    </div>
+    
+    <div>
+        <h3>Formulario de Solicitud</h3>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Enviar Solicitud</button>
+            <a href="{% url 'mascotas:detalle' mascota.id %}">Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

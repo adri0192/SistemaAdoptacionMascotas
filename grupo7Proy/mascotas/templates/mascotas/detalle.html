@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ mascota.nombre }} - Detalle{% endblock %}
+
+{% block content %}
+<h1>{{ mascota.nombre }}</h1>
+
+<div>
+    <div>
+        <h3>Información Básica</h3>
+        <p><strong>Especie:</strong> {{ mascota.get_especie_display }}</p>
+        <p><strong>Raza:</strong> {{ mascota.raza }}</p>
+        <p><strong>Edad:</strong> {{ mascota.edad }} años</p>
+        <p><strong>Sexo:</strong> {{ mascota.get_sexo_display }}</p>
+        <p><strong>Estado:</strong> {{ mascota.get_estado_adopcion_display }}</p>
+        <p><strong>Fecha de ingreso:</strong> {{ mascota.fecha_ingreso|date:"d/m/Y" }}</p>
+        
+        {% if mascota.adoptante %}
+            <p><strong>Adoptado por:</strong> {{ mascota.adoptante.get_full_name }}</p>
+        {% endif %}
+    </div>
+    
+    <div>
+        <h3>Acciones</h3>
+        {% if user.is_authenticated %}
+            {% if mascota.estado_adopcion == 'disponible' %}
+                {% if not ya_solicito %}
+                    <a href="{% url 'solicitudes:solicitar' mascota.id %}">Solicitar Adopción</a>
+                {% else %}
+                    <p>Ya has enviado una solicitud para esta mascota.</p>
+                {% endif %}
+            {% else %}
+                <p>Esta mascota ya no está disponible para adopción.</p>
+            {% endif %}
+        {% else %}
+            <p><a href="{% url 'usuarios:login' %}">Inicia sesión</a> para solicitar adopción.</p>
+        {% endif %}
+        
+        {% if user.rol == 'admin' %}
+            <a href="{% url 'mascotas:editar' mascota.id %}">Editar Mascota</a>
+        {% endif %}
+    </div>
+</div>
+
+<a href="{% url 'mascotas:inicio' %}">Volver al Inicio</a>
+{% endblock %}
+

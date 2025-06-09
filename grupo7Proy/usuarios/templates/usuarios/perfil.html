@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Mi Perfil{% endblock %}
+
+{% block content %}
+<h1>Mi Perfil</h1>
+
+<div>
+    <h3>Información Personal</h3>
+    <p><strong>Usuario:</strong> {{ user.username }}</p>
+    <p><strong>Nombre:</strong> {{ user.get_full_name }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Teléfono:</strong> {{ user.telefono|default:"No especificado" }}</p>
+    <p><strong>Dirección:</strong> {{ user.direccion|default:"No especificada" }}</p>
+    <p><strong>Rol:</strong> {{ user.get_rol_display }}</p>
+    <p><strong>Fecha de registro:</strong> {{ user.fecha_registro|date:"d/m/Y" }}</p>
+</div>
+<div>
+    <h3>Estadísticas</h3>
+    <p><strong>Solicitudes enviadas:</strong> {{ user.solicitudadopcion_set.count }}</p>
+    <p><strong>Mascotas adoptadas:</strong> {{ user.mascotas_adoptadas.count }}</p>
+    
+    {% if user.mascotas_adoptadas.exists %}
+        <h4>Mis Mascotas Adoptadas</h4>
+        <ul>
+            {% for mascota in user.mascotas_adoptadas.all %}
+                <li>
+                    <a href="{% url 'mascotas:detalle' mascota.id %}">
+                        {{ mascota.nombre }} ({{ mascota.get_especie_display }})
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+{% endblock %}

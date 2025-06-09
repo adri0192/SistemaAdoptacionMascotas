@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block auth_content %}
+<div class="auth-container">
+    <div class="auth-card">
+        <h2>📝 Registro de Usuario</h2>
+        
+        <form method="post">
+            {% csrf_token %}
+            
+            <div>
+                <div>
+                    <label for="{{ form.username.id_for_label }}">Usuario:</label>
+                    {{ form.username }}
+                    {% if form.username.errors %}
+                        <div>{{ form.username.errors.0 }}</div>
+                    {% endif %}
+                </div><br>
+                <div>
+                    <label for="{{ form.email.id_for_label }}">Email:</label>
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        <div>{{ form.email.errors.0 }}</div>
+                    {% endif %}
+                </div><br>
+            </div>
+            
+            <div>
+                <div>
+                    <label for="{{ form.first_name.id_for_label }}">Nombre:</label>
+                    {{ form.first_name }}
+                    {% if form.first_name.errors %}
+                        <div>{{ form.first_name.errors.0 }}</div>
+                    {% endif %}
+                </div><br>
+                <div>
+                    <label for="{{ form.last_name.id_for_label }}">Apellido:</label>
+                    {{ form.last_name }}
+                    {% if form.last_name.errors %}
+                        <div>{{ form.last_name.errors.0 }}</div>
+                    {% endif %}
+                </div><br>
+            </div>
+            
+            <div>
+                <div>
+                    <label for="{{ form.telefono.id_for_label }}">Teléfono:</label>
+                    {{ form.telefono }}
+                    {% if form.telefono.errors %}
+                        <div>{{ form.telefono.errors.0 }}</div>
+                    {% endif %}
+                </div><br>
+                <div>
+                    <label for="{{ form.direccion.id_for_label }}">Dirección:</label>
+                    {{ form.direccion }}
+                    {% if form.direccion.errors %}
+                        <div>{{ form.direccion.errors.0 }}</div>
+                    {% endif %}
+                </div><br>
+            </div>
+            
+            <div>
+                <div>
+                    <label for="{{ form.password1.id_for_label }}">Contraseña:</label>
+                    {{ form.password1 }}
+                    {% if form.password1.errors %}
+                        <div>{{ form.password1.errors.0 }}</div>
+                    {% endif %}
+                </div><br>
+                <div>
+                    <label for="{{ form.password2.id_for_label }}">Confirmar Contraseña:</label>
+                    {{ form.password2 }}
+                    {% if form.password2.errors %}
+                        <div>{{ form.password2.errors.0 }}</div>
+                    {% endif %}
+                </div><br>
+            </div>
+            
+            <button type="submit">Registrarse</button>
+        </form>
+        
+        <div>
+            <p>¿Ya tienes cuenta? <a href="{% url 'usuarios:login' %}">Inicia sesión aquí</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

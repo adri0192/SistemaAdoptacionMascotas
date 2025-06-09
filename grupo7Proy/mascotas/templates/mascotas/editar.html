@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar {{ mascota.nombre }}{% endblock %}
+
+{% block content %}
+<h1>Editar {{ mascota.nombre }}</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Actualizar</button>
+    <a href="{% url 'mascotas:gestionar' %}">Cancelar</a>
+</form>
+{% endblock %}
