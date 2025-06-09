@@ -99,11 +99,7 @@ Puedes acceder al padel de administración de Django en:
   <img src="static/img/estructura.png">
 </h1>
 ## ⛓️‍💥 Diagrama Base de Datos
-<<<<<<< HEAD
-<h1>
-=======
 <h1 align = "center">
->>>>>>> a4bf5298bc2822d9832c744e6bf7b3400d3ad793
   <img src="static/img/diagramaBD.png">
 </h1>
 
