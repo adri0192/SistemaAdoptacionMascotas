@@ -6,10 +6,56 @@
     <title>{% block title %}Sistema de Adopción de Mascotas{% endblock %}</title>
 </head>
 <body>
+    {% if user.is_authenticated %}
+        <!-- Header -->
+        <div class="header">
+            <h1>🐾 Sistema de Adopción</h1>
+            <div class="user-info">
+                <span class="user-name">👤 {{ user.get_full_name|default:user.username }}</span>
+                <form method="post" action="{% url 'usuarios:logout' %}" class="logout-form">
+                    {% csrf_token %}
+                    <button type="submit" class="logout-btn">🚪 Cerrar Sesión</button>
+                </form>
+            </div>
+        </div>
 
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="section-title">Navegación</div>
+            <ul>
+                <li><a href="{% url 'mascotas:inicio' %}">🏠 Inicio</a></li>
+                <li><a href="{% url 'usuarios:perfil' %}">👤 Mi Perfil</a></li>
+            </ul>
+            
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Messages -->
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        <div class="{{ message.tags }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <!-- Page Content -->
+            {% block content %}{% endblock %}
+        </div>
+    {% else %}
+        <!-- Para páginas de login/registro sin sidebar -->
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endif %}
     {% block auth_content %}
 
     {% endblock %}
-    
+
 </body>
 </html>

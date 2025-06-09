@@ -69,14 +69,14 @@ git clone <URL-del-repositorio>
 #En windows
 python -m venv env
 env\Scripts\activate
-#En Linux
-python3 -m venv env
-source env\bin\activate
+
 ```
 3. Instalar las dependencias
+```
 	pip install -r requirements.txt
 	cd grupo7Proy
 ## ⚙️ Configurar la base de datos
+```
 4. Ejecutar migraciones
 ```  
 py \manage.py makemigrations  
@@ -97,6 +97,7 @@ Puedes acceder al padel de administración de Django en:
 ## 🌐Estructura base
 <h1 align = "center">
   <img src="static/img/estructura.png">
+  <img src="static/img/diagramaBD.png">
 </h1>
 
 ##END
