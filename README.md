@@ -73,8 +73,8 @@ env\Scripts\activate
 ```
 3. Instalar las dependencias
 ```
-	pip install -r requirements.txt
-	cd grupo7Proy
+pip install -r requirements.txt
+cd grupo7Proy
 ## ⚙️ Configurar la base de datos
 ```
 4. Ejecutar migraciones
