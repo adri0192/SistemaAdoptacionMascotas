@@ -5,8 +5,9 @@ from .models import Usuario
 
 class CustomAdminSite(AdminSite):
     def has_permission(self, request):
-        """Solo usuarios con rol admin pueden acceder"""
-        return request.user.is_active and getattr(request.user, 'rol', None) == 'admin'
+        """Solo superusuarios o usuarios con rol admin pueden acceder"""
+        return request.user.is_active and (request.user.is_superuser or getattr(request.user, 'rol', None) == 'admin')
+
 
 # Reemplazar el sitio de admin por defecto
 admin.site.__class__ = CustomAdminSite
