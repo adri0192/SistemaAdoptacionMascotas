@@ -16,37 +16,37 @@
 </div>
 
 {% if mascotas %}
-    <div class="mascotas-grid">
+    <div>
         {% for mascota in mascotas %}
-            <div class="mascota-card">
-                <div class="mascota-header">
+            <div>
+                <div>
                     <h3>{{ mascota.nombre }}</h3>
-                    <div class="mascota-especie">{{ mascota.get_especie_display }}</div>
+                    <div>{{ mascota.get_especie_display }}</div>
                 </div>
                 
-                <div class="mascota-body">
-                    <div class="mascota-info">
-                        <div class="info-item">
-                            <div class="info-label">Raza</div>
-                            <div class="info-value">{{ mascota.raza }}</div>
+                <div>
+                    <div>
+                        <div>
+                            <div>Raza</div>
+                            <div>{{ mascota.raza }}</div>
                         </div>
-                        <div class="info-item">
-                            <div class="info-label">Edad</div>
-                            <div class="info-value">{{ mascota.edad }} años</div>
+                        <div>
+                            <div>Edad</div>
+                            <div>{{ mascota.edad }} años</div>
                         </div>
-                        <div class="info-item">
-                            <div class="info-label">Sexo</div>
-                            <div class="info-value">{{ mascota.get_sexo_display }}</div>
+                        <div>
+                            <div>Sexo</div>
+                            <div>{{ mascota.get_sexo_display }}</div>
                         </div>
-                        <div class="info-item">
-                            <div class="info-label">Ingreso</div>
-                            <div class="info-value">{{ mascota.fecha_ingreso|date:"d/m/Y" }}</div>
+                        <div>
+                            <div>Ingreso</div>
+                            <div>{{ mascota.fecha_ingreso|date:"d/m/Y" }}</div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="mascota-footer">
-                    <a href="{% url 'mascotas:detalle' mascota.id %}" class="btn-ver-detalle">
+                <div>
+                    <a href="{% url 'mascotas:detalle' mascota.id %}">
                         👁️ Ver Detalles
                     </a>
                 </div>

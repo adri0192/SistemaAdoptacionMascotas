@@ -10,7 +10,7 @@ from usuarios.views import es_admin
 def solicitar(request, mascota_id):
     mascota = get_object_or_404(Mascota, id=mascota_id)
     
-    if mascota.estado_adopcion != 'disponible':
+    if mascota.estado_adopcion != 'Disponible':
         messages.error(request, 'Esta mascota ya no está disponible para adopción.')
         return redirect('mascotas:detalle', mascota_id=mascota.id)
     

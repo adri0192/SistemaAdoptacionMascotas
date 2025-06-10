@@ -6,7 +6,7 @@ from .forms import MascotaForm
 from usuarios.views import es_admin
 
 def inicio(request):
-    mascotas_disponibles = Mascota.objects.filter(estado_adopcion='disponible')
+    mascotas_disponibles = Mascota.objects.filter(estado_adopcion='Disponible')
     return render(request, 'mascotas/inicio.html', {'mascotas': mascotas_disponibles})
 
 def detalle(request, mascota_id):

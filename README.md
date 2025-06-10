@@ -103,4 +103,5 @@ Puedes acceder al padel de administración de Django en:
   <img src="static/img/diagramaBD.png">
 </h1>
 
+
 ##END
