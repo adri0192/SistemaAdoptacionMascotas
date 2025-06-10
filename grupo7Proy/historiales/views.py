@@ -50,7 +50,7 @@ def agregar(request):
 def cargar_mascotas_por_especie(request):
     especie = request.GET.get('especie')
     user = request.user
-    
+
     if user.rol == 'admin':
         mascotas = Mascota.objects.all()
     else:
@@ -61,3 +61,5 @@ def cargar_mascotas_por_especie(request):
     
     mascotas_data = [{'id': m.id, 'nombre': m.nombre} for m in mascotas]
     return JsonResponse({'mascotas': mascotas_data})
+
+
