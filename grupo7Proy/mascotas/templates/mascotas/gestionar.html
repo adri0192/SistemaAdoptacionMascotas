@@ -41,6 +41,9 @@
                 <td>
                     <a href="{% url 'mascotas:detalle' mascota.id %}">Ver</a>
                     <a href="{% url 'mascotas:editar' mascota.id %}">Editar</a>
+                    <a href="{% url 'mascotas:eliminar' mascota.id %}" 
+                       onclick="return confirm('¿Estás seguro de que quieres eliminar a {{ mascota.nombre }}?')" 
+                       style="color: red;">Eliminar</a>
                 </td>
             </tr>
         {% endfor %}

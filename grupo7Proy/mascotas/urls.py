@@ -9,4 +9,5 @@ urlpatterns = [
     path('gestionar/', views.gestionar, name='gestionar'),
     path('agregar/', views.agregar, name='agregar'),
     path('editar/<int:mascota_id>/', views.editar,  name='editar'),
+    path('eliminar/<int:mascota_id>/', views.eliminar, name='eliminar'),
 ]

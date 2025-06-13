@@ -1,23 +1,31 @@
 {% extends 'base.html' %}
 
-{% block title %}Eliminar Mascota{% endblock %}
+{% block title %}Confirmar Eliminación{% endblock %}
 
 {% block content %}
-<h1>Eliminar Mascota</h1>
-
-<div class="alert alert-warning">
-    <h3>¿Estás seguro de que quieres eliminar esta mascota?</h3>
-    <p><strong>Nombre:</strong> {{ mascota.nombre }}</p>
-    <p><strong>Especie:</strong> {{ mascota.get_especie_display }}</p>
-    <p><strong>Raza:</strong> {{ mascota.raza }}</p>
-    <p><strong>Edad:</strong> {{ mascota.edad }} años</p>
+<div class="container">
+    <h1>Confirmar Eliminación</h1>
     
-    <p class="text-danger">Esta acción no se puede deshacer.</p>
+    <div class="alert alert-warning">
+        <h4>¿Estás seguro de que quieres eliminar esta mascota?</h4>
+        <p><strong>Nombre:</strong> {{ mascota.nombre }}</p>
+        <p><strong>Especie:</strong> {{ mascota.get_especie_display }}</p>
+        <p><strong>Raza:</strong> {{ mascota.raza }}</p>
+        <p><strong>Estado:</strong> {{ mascota.get_estado_adopcion_display }}</p>
+    </div>
+    
+    <div class="alert alert-danger">
+        <strong>¡Atención!</strong> Esta acción no se puede deshacer. Se eliminarán también:
+        <ul>
+            <li>Todos los historiales médicos de esta mascota</li>
+            <li>Todas las solicitudes de adopción relacionadas</li>
+        </ul>
+    </div>
+    
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sí, eliminar definitivamente</button>
+        <a href="{% url 'mascotas:gestionar' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
 </div>
-
-<form method="post">
-    {% csrf_token %}
-    <button type="submit" class="btn btn-danger">Sí, eliminar</button>
-    <a href="{% url 'mascotas:gestionar' %}" class="btn btn-secondary">Cancelar</a>
-</form>
 {% endblock %}
