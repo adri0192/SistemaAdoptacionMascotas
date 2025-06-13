@@ -12,13 +12,13 @@ def lista(request):
     form = FiltroHistorialForm(request.GET, user=request.user)
     historiales = HistorialMedico.objects.none()
     
+    # Los admins pueden ver todos los historiales
+    # Los adoptantes pueden ver historiales de todas las mascotas (para informarse antes de adoptar)
     if request.user.rol == 'admin':
         historiales = HistorialMedico.objects.all()
     else:
-        # Solo mostrar historiales de mascotas adoptadas por el usuario
-        historiales = HistorialMedico.objects.filter(
-            mascota__adoptante=request.user
-        )
+        # Los adoptantes pueden ver todos los historiales médicos para informarse
+        historiales = HistorialMedico.objects.all()
     
     # Aplicar filtros
     if form.is_valid():
@@ -50,11 +50,8 @@ def agregar(request):
 def cargar_mascotas_por_especie(request):
     especie = request.GET.get('especie')
     user = request.user
-
-    if user.rol == 'admin':
-        mascotas = Mascota.objects.all()
-    else:
-        mascotas = user.mascotas_adoptadas.all()
+    
+    
     
     if especie:
         mascotas = mascotas.filter(especie=especie)

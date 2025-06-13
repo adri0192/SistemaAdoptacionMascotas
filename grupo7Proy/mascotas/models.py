@@ -30,7 +30,7 @@ class Mascota(models.Model):
     estado_adopcion = models.CharField(
         max_length= 15,
         choices=ESTADO,
-        default="disponible",
+        default="Disponible",
         verbose_name= "Estado de adopción"
     )
     fecha_ingreso = models.DateTimeField(default=timezone.now, verbose_name="Fecha de ingreso")
@@ -46,7 +46,7 @@ class Mascota(models.Model):
     def __str__(self):
         return f"{self.nombre} ({self.especie})"
 
-class Meta:
-    verbose_name = "Mascota"
-    verbose_name_plural = "Mascotas"
-    ordering = ['-fecha_ingreso']
+    class Meta:
+        verbose_name = "Mascota"
+        verbose_name_plural = "Mascotas"
+        ordering = ['-fecha_ingreso']

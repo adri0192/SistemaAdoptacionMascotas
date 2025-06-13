@@ -30,7 +30,7 @@ def perfil(request):
 def panel_admin(request):
     stats = {
         'total_mascotas': Mascota.objects.count(),
-        'mascotas_disponibles': Mascota.objects.filter(estado_adopcion='disponible').count(),
+        'mascotas_disponibles': Mascota.objects.filter(estado_adopcion='Disponible').count(),
         'mascotas_adoptadas': Mascota.objects.filter(estado_adopcion='adoptado').count(),
         'solicitudes_pendientes': SolicitudAdopcion.objects.filter(estado='pendiente').count(),
         'total_usuarios': Usuario.objects.count(),

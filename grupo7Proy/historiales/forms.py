@@ -7,26 +7,28 @@ class HistorialMedicoForm(forms.ModelForm):
         model = HistorialMedico
         fields = ['mascota', 'descripcion', 'tratamiento']
         widgets = {
-            'descripcion': forms.Textarea(attrs={'rows': 3}),
-            'tratamiento': forms.Textarea(attrs={'rows': 3}),
+            'descripcion': forms.Textarea(attrs={'rows': 4}),
+            'tratamiento': forms.Textarea(attrs={'rows': 4}),
         }
 
 class FiltroHistorialForm(forms.Form):
+    ESPECIES = [('', 'Todas')] + Mascota.ESPECIES
+    
     especie = forms.ChoiceField(
-        choices=[('', 'Todas las especies')] + Mascota.ESPECIES,
-        required=False
+        choices=ESPECIES,
+        required=False,
+        widget=forms.Select(attrs={'class': 'form-control'})
     )
     mascota = forms.ModelChoiceField(
         queryset=Mascota.objects.none(),
         required=False,
-        empty_label="Seleccionar mascota"
+        empty_label="Todas las mascotas",
+        widget=forms.Select(attrs={'class': 'form-control'})
     )
     
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
         
-        if user and user.rol == 'admin':
-            self.fields['mascota'].queryset = Mascota.objects.all()
-        elif user:
-            self.fields['mascota'].queryset = user.mascotas_adoptadas.all()
+        # Tanto admins como adoptantes pueden ver todas las mascotas
+        self.fields['mascota'].queryset = Mascota.objects.all()

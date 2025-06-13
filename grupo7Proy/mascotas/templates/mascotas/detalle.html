@@ -23,7 +23,7 @@
     <div>
         <h3>Acciones</h3>
         {% if user.is_authenticated %}
-            {% if mascota.estado_adopcion == 'disponible' %}
+            {% if mascota.estado_adopcion == 'Disponible' %}
                 {% if not ya_solicito %}
                     <a href="{% url 'solicitudes:solicitar' mascota.id %}">Solicitar Adopción</a>
                 {% else %}
