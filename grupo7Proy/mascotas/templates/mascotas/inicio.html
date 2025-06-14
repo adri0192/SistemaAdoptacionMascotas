@@ -3,61 +3,108 @@
 {% block title %}Inicio - Sistema de Adopción{% endblock %}
 
 {% block content %}
-<div>
-    <h1>🏠 Bienvenido al Sistema de Adopción de Mascotas</h1>
-    <p>Encuentra tu compañero perfecto entre nuestras mascotas disponibles para adopción.</p>
-</div>
-
-<div>
-    <h2>🐾 Mascotas Disponibles</h2>
-    <div>
-        {{ mascotas.count }} disponibles
-    </div>
-</div>
-
-{% if mascotas %}
-    <div>
-        {% for mascota in mascotas %}
-            <div>
-                <div>
-                    <h3>{{ mascota.nombre }}</h3>
-                    <div>{{ mascota.get_especie_display }}</div>
-                </div>
-                
-                <div>
-                    <div>
-                        <div>
-                            <div>Raza</div>
-                            <div>{{ mascota.raza }}</div>
-                        </div>
-                        <div>
-                            <div>Edad</div>
-                            <div>{{ mascota.edad }} años</div>
-                        </div>
-                        <div>
-                            <div>Sexo</div>
-                            <div>{{ mascota.get_sexo_display }}</div>
-                        </div>
-                        <div>
-                            <div>Ingreso</div>
-                            <div>{{ mascota.fecha_ingreso|date:"d/m/Y" }}</div>
+<div class="container-fluid">
+    <!-- Hero Section -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card text-white" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px;">
+                <div class="card-body text-center py-5">
+                    <h1 class="display-4 fw-bold mb-3">
+                        <i class="bi bi-house-heart-fill"></i> Bienvenido al Sistema de Adopción
+                    </h1>
+                    <p class="lead mb-4">Encuentra tu compañero perfecto entre nuestras mascotas disponibles para adopción</p>
+                    <div class="row justify-content-center">
+                        <div class="col-md-3 col-sm-6 mb-3">
+                            <div class="bg-white bg-opacity-20 rounded-3 p-3">
+                                <h3 class="fw-bold text-black">{{ mascotas.count }}</h3>
+                                <p class="mb-0 text-black">Mascotas Disponibles</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <div>
-                    <a href="{% url 'mascotas:detalle' mascota.id %}">
-                        👁️ Ver Detalles
-                    </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mascotas Section -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2 class="text-center mb-4 text-dark text-opacity-100">
+                <i class="bi bi-heart-fill text-danger"></i> Mascotas Disponibles para Adopción
+            </h2>
+        </div>
+    </div>
+
+    {% if mascotas %}
+        <div class="row">
+            {% for mascota in mascotas %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card pet-card h-100">
+                        <div class="card-header text-center" style="background: linear-gradient(135deg, #3498db, #2980b9); color: white;">
+                            <h4 class="card-title mb-0">
+                                <i class="bi bi-heart"></i> {{ mascota.nombre }}
+                            </h4>
+                            <small class="opacity-75">{{ mascota.get_especie_display }}</small>
+                        </div>
+                        
+                        <div class="card-body">
+                            <div class="row text-center mb-3">
+                                <div class="col-6">
+                                    <div class="border rounded p-2">
+                                        <i class="bi bi-tag text-primary"></i>
+                                        <div class="fw-bold">Raza</div>
+                                        <small>{{ mascota.raza }}</small>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="border rounded p-2">
+                                        <i class="bi bi-calendar text-success"></i>
+                                        <div class="fw-bold">Edad</div>
+                                        <small>{{ mascota.edad }} años</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row text-center mb-3">
+                                <div class="col-6">
+                                    <div class="border rounded p-2">
+                                        <i class="bi bi-gender-ambiguous text-info"></i>
+                                        <div class="fw-bold">Sexo</div>
+                                        <small>{{ mascota.get_sexo_display }}</small>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="border rounded p-2">
+                                        <i class="bi bi-clock text-warning"></i>
+                                        <div class="fw-bold">Ingreso</div>
+                                        <small>{{ mascota.fecha_ingreso|date:"d/m/Y" }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-footer text-center">
+                            <a href="{% url 'mascotas:detalle' mascota.id %}" class="btn btn-primary">
+                                <i class="bi bi-eye"></i> Ver Detalles
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card text-center">
+                    <div class="card-body py-5">
+                        <i class="bi bi-emoji-frown display-1 text-muted mb-3"></i>
+                        <h3 class="text-muted">No hay mascotas disponibles</h3>
+                        <p class="text-muted">No hay mascotas disponibles para adopción en este momento.</p>
+                        <p class="text-primary fw-bold">¡Vuelve pronto!</p>
+                    </div>
                 </div>
             </div>
-        {% endfor %}
-    </div>
-{% else %}
-    <div>
-        <div>🐕</div>
-        <h3>No hay mascotas disponibles</h3>
-        <p>No hay mascotas disponibles para adopción en este momento. ¡Vuelve pronto!</p>
-    </div>
-{% endif %}
-{% endblock content %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
