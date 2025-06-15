@@ -3,34 +3,11 @@
 {% block title %}Panel de Administración{% endblock %}
 
 {% block content %}
-<h1>Panel de Administración</h1>
-
-<div>
-    <div>
-        <h3>{{ stats.total_mascotas }}</h3>
-        <p>Total Mascotas</p>
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="display-5 fw-bold text-center mb-4">
+                <i class="bi bi-speedometer2 text-primary"></i> Panel de Administración
+            </h1>
+        </div>
     </div>
-    <div>
-        <h3>{{ stats.mascotas_disponibles }}</h3>
-        <p>Disponibles</p>
-    </div>
-    <div>
-        <h3>{{ stats.mascotas_adoptadas }}</h3>
-        <p>Adoptadas</p>
-    </div>
-    <div>
-        <h3>{{ stats.solicitudes_pendientes }}</h3>
-        <p>Solicitudes Pendientes</p>
-    </div>
-    <div>
-        <h3>{{ stats.total_usuarios }}</h3>
-        <p>Total Usuarios</p>
-    </div>
-</div>
-
-<div>
-    <a href="{% url 'mascotas:gestionar' %}">Gestionar Mascotas</a>
-    <a href="{% url 'solicitudes:gestionar' %}">Gestionar Solicitudes</a>
-    <a href="{% url 'historiales:lista' %}">Historial Médico</a>
-</div>
-{% endblock %}
