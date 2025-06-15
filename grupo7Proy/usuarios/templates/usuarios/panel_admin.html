@@ -11,3 +11,79 @@
             </h1>
         </div>
     </div>
+
+     <!-- Estadísticas -->
+    <div class="row mb-5">
+        <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+            <div class="stats-card" style="background: linear-gradient(135deg, #3498db, #2980b9);">
+                <i class="bi bi-heart-fill display-4 mb-2"></i>
+                <h3>{{ stats.total_mascotas }}</h3>
+                <p class="mb-0">Total Mascotas</p>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+            <div class="stats-card" style="background: linear-gradient(135deg, #27ae60, #229954);">
+                <i class="bi bi-check-circle-fill display-4 mb-2"></i>
+                <h3>{{ stats.mascotas_disponibles }}</h3>
+                <p class="mb-0">Disponibles</p>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+            <div class="stats-card" style="background: linear-gradient(135deg, #e74c3c, #c0392b);">
+                <i class="bi bi-house-heart-fill display-4 mb-2"></i>
+                <h3>{{ stats.mascotas_adoptadas }}</h3>
+                <p class="mb-0">Adoptadas</p>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+            <div class="stats-card" style="background: linear-gradient(135deg, #f39c12, #e67e22);">
+                <i class="bi bi-clock-fill display-4 mb-2"></i>
+                <h3>{{ stats.solicitudes_pendientes }}</h3>
+                <p class="mb-0">Solicitudes Pendientes</p>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+            <div class="stats-card" style="background: linear-gradient(135deg, #9b59b6, #8e44ad);">
+                <i class="bi bi-people-fill display-4 mb-2"></i>
+                <h3>{{ stats.total_usuarios }}</h3>
+                <p class="mb-0">Total Usuarios</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Acciones Rápidas -->
+    <div class="row">
+        <div class="col-12">
+            <h3 class="mb-4">
+                <i class="bi bi-lightning-fill text-warning"></i> Acciones Rápidas
+            </h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-plus-circle-fill display-4 text-success mb-3"></i>
+                    <h5 class="card-title">Gestionar Mascotas</h5>
+                    <p class="card-text">Agregar, editar o eliminar mascotas del sistema</p>
+                    <a href="{% url 'mascotas:gestionar' %}" class="btn btn-success">
+                        <i class="bi bi-list-task"></i> Gestionar
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-clipboard-check-fill display-4 text-primary mb-3"></i>
+                    <h5 class="card-title">Gestionar Solicitudes</h5>
+                    <p class="card-text">Revisar y procesar solicitudes de adopción</p>
+                    <a href="{% url 'solicitudes:gestionar' %}" class="btn btn-primary">
+                        <i class="bi bi-clipboard-check"></i> Gestionar
+                    </a>
+                </div>
+            </div>
+        </div>
+        
