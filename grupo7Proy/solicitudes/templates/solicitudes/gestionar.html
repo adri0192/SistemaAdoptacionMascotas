@@ -16,3 +16,46 @@
             </div>
         </div>
     </div>
+    {% if solicitudes %}
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th><i class="bi bi-person"></i> Usuario</th>
+                                        <th><i class="bi bi-heart"></i> Mascota</th>
+                                        <th><i class="bi bi-calendar"></i> Fecha Solicitud</th>
+                                        <th><i class="bi bi-flag"></i> Estado</th>
+                                        <th><i class="bi bi-chat-text"></i> Observaciones</th>
+                                        <th><i class="bi bi-tools"></i> Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for solicitud in solicitudes %}
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <i class="bi bi-person-circle text-muted me-2"></i>
+                                                    <div>
+                                                        <strong>{{ solicitud.usuario.get_full_name }}</strong>
+                                                        <small class="text-muted d-block">{{ solicitud.usuario.username }}</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <a href="{% url 'mascotas:detalle' solicitud.mascota.id %}" 
+                                                   class="text-decoration-none">
+                                                    <div class="d-flex align-items-center">
+                                                        <i class="bi bi-{{ solicitud.mascota.especie|lower }} text-primary me-2"></i>
+                                                        <strong>{{ solicitud.mascota.nombre }}</strong>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <i class="bi bi-clock text-muted me-1"></i>
+                                                {{ solicitud.fecha_solicitud|date:"d/m/Y H:i" }}
+                                            </td>
+                                            <td>
