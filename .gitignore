@@ -5,11 +5,6 @@ env/
 .env/
 ENV/
 
-# Base de datos SQLite
-*.sqlite3
-*.db
-*.log
-
 # Archivos de Python cache
 __pycache__/
 *.pyc
