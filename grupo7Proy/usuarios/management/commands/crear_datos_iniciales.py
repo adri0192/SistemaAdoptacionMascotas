@@ -48,25 +48,6 @@ class Command(BaseCommand):
         else:
             self.stdout.write(self.style.WARNING('✓ Usuario adoptante ya existe'))
 
-
-        for mascota_data in mascotas_data:
-            mascota, created = Mascota.objects.get_or_create(
-                nombre=mascota_data['nombre'],
-                defaults=mascota_data
-            )
-            if created:
-                self.stdout.write(self.style.SUCCESS(f'✓ Mascota creada: {mascota.nombre}'))
-                
-                # Agregar historial médico de ejemplo
-                HistorialMedico.objects.create(
-                    mascota=mascota,
-                    descripcion=f"Revisión inicial de {mascota.nombre}. Mascota en buen estado general.",
-                    tratamiento="Vacunación completa y desparasitación. Próxima revisión en 6 meses."
-                )
-                self.stdout.write(self.style.SUCCESS(f'✓ Historial médico creado para {mascota.nombre}'))
-            else:
-                self.stdout.write(self.style.WARNING(f'✓ Mascota {mascota.nombre} ya existe'))
-
         self.stdout.write(self.style.SUCCESS('\n' + '='*50))
         self.stdout.write(self.style.SUCCESS('DATOS INICIALES CREADOS EXITOSAMENTE!'))
         self.stdout.write(self.style.SUCCESS('='*50))

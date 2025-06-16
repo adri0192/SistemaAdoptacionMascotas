@@ -1,87 +1,120 @@
 {% extends 'base.html' %}
 
 {% block auth_content %}
-<div class="auth-container" style="background: linear-gradient(135deg, #27ae60, #229954);">
-    <div class="auth-card">
-        <h2>📝 Registro de Usuario</h2>
-        
-        <form method="post">
-            {% csrf_token %}
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
-                <div>
-                    <label for="{{ form.username.id_for_label }}">Usuario:</label>
-                    {{ form.username }}
-                    {% if form.username.errors %}
-                        <div style="color: #e74c3c; font-size: 12px; margin-top: 5px;">{{ form.username.errors.0 }}</div>
-                    {% endif %}
-                </div>
-                <div>
-                    <label for="{{ form.email.id_for_label }}">Email:</label>
-                    {{ form.email }}
-                    {% if form.email.errors %}
-                        <div style="color: #e74c3c; font-size: 12px; margin-top: 5px;">{{ form.email.errors.0 }}</div>
-                    {% endif %}
-                </div>
+<div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); padding: 20px;">
+    <div class="card shadow-lg border-0" style="width: 100%; max-width: 600px; border-radius: 20px; overflow: hidden;">
+        <div class="card-body p-5">
+            <div class="text-center mb-4">
+                <i class="bi bi-person-plus-fill text-success" style="font-size: 3rem;"></i>
+                <h2 class="card-title mt-3 mb-0" style="color: #2c3e50; font-weight: 700;">Registro de Usuario</h2>
             </div>
             
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
-                <div>
-                    <label for="{{ form.first_name.id_for_label }}">Nombre:</label>
-                    {{ form.first_name }}
-                    {% if form.first_name.errors %}
-                        <div style="color: #e74c3c; font-size: 12px; margin-top: 5px;">{{ form.first_name.errors.0 }}</div>
-                    {% endif %}
+            <form method="post">
+                {% csrf_token %}
+                
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="{{ form.username.id_for_label }}" class="form-label">Usuario:</label>
+                        {{ form.username }}
+                        {% if form.username.errors %}
+                            <div class="text-danger small mt-1">{{ form.username.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6">
+                        <label for="{{ form.email.id_for_label }}" class="form-label">Email:</label>
+                        {{ form.email }}
+                        {% if form.email.errors %}
+                            <div class="text-danger small mt-1">{{ form.email.errors.0 }}</div>
+                        {% endif %}
+                    </div>
                 </div>
-                <div>
-                    <label for="{{ form.last_name.id_for_label }}">Apellido:</label>
-                    {{ form.last_name }}
-                    {% if form.last_name.errors %}
-                        <div style="color: #e74c3c; font-size: 12px; margin-top: 5px;">{{ form.last_name.errors.0 }}</div>
-                    {% endif %}
+                
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="{{ form.first_name.id_for_label }}" class="form-label">Nombre:</label>
+                        {{ form.first_name }}
+                        {% if form.first_name.errors %}
+                            <div class="text-danger small mt-1">{{ form.first_name.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6">
+                        <label for="{{ form.last_name.id_for_label }}" class="form-label">Apellido:</label>
+                        {{ form.last_name }}
+                        {% if form.last_name.errors %}
+                            <div class="text-danger small mt-1">{{ form.last_name.errors.0 }}</div>
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
+                
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="{{ form.telefono.id_for_label }}" class="form-label">Teléfono:</label>
+                        {{ form.telefono }}
+                        {% if form.telefono.errors %}
+                            <div class="text-danger small mt-1">{{ form.telefono.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6">
+                        <label for="{{ form.direccion.id_for_label }}" class="form-label">Dirección:</label>
+                        {{ form.direccion }}
+                        {% if form.direccion.errors %}
+                            <div class="text-danger small mt-1">{{ form.direccion.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <label for="{{ form.password1.id_for_label }}" class="form-label">Contraseña:</label>
+                        {{ form.password1 }}
+                        {% if form.password1.errors %}
+                            <div class="text-danger small mt-1">{{ form.password1.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6">
+                        <label for="{{ form.password2.id_for_label }}" class="form-label">Confirmar Contraseña:</label>
+                        {{ form.password2 }}
+                        {% if form.password2.errors %}
+                            <div class="text-danger small mt-1">{{ form.password2.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-success w-100 py-3 mb-3" style="border-radius: 10px; font-weight: 600;">
+                    <i class="bi bi-person-plus"></i> Registrarse
+                </button>
+            </form>
             
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
-                <div>
-                    <label for="{{ form.telefono.id_for_label }}">Teléfono:</label>
-                    {{ form.telefono }}
-                    {% if form.telefono.errors %}
-                        <div style="color: #e74c3c; font-size: 12px; margin-top: 5px;">{{ form.telefono.errors.0 }}</div>
-                    {% endif %}
-                </div>
-                <div>
-                    <label for="{{ form.direccion.id_for_label }}">Dirección:</label>
-                    {{ form.direccion }}
-                    {% if form.direccion.errors %}
-                        <div style="color: #e74c3c; font-size: 12px; margin-top: 5px;">{{ form.direccion.errors.0 }}</div>
-                    {% endif %}
-                </div>
+            <div class="text-center">
+                <p class="mb-0">¿Ya tienes cuenta? <a href="{% url 'usuarios:login' %}" class="text-success text-decoration-none fw-bold">Inicia sesión aquí</a></p>
             </div>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
-                <div>
-                    <label for="{{ form.password1.id_for_label }}">Contraseña:</label>
-                    {{ form.password1 }}
-                    {% if form.password1.errors %}
-                        <div style="color: #e74c3c; font-size: 12px; margin-top: 5px;">{{ form.password1.errors.0 }}</div>
-                    {% endif %}
-                </div>
-                <div>
-                    <label for="{{ form.password2.id_for_label }}">Confirmar Contraseña:</label>
-                    {{ form.password2 }}
-                    {% if form.password2.errors %}
-                        <div style="color: #e74c3c; font-size: 12px; margin-top: 5px;">{{ form.password2.errors.0 }}</div>
-                    {% endif %}
-                </div>
-            </div>
-            
-            <button type="submit" style="width: 100%; background: linear-gradient(135deg, #27ae60, #229954); color: white; padding: 12px; border: none; border-radius: 4px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.3s;">Registrarse</button>
-        </form>
-        
-        <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #ecf0f1;">
-            <p>¿Ya tienes cuenta? <a href="{% url 'usuarios:login' %}" style="color: #27ae60; text-decoration: none;">Inicia sesión aquí</a></p>
         </div>
     </div>
 </div>
+
+<style>
+    .form-control, .form-select {
+        border-radius: 8px;
+        border: 2px solid #e9ecef;
+        padding: 12px 15px;
+        transition: all 0.3s ease;
+    }
+    
+    .form-control:focus, .form-select:focus {
+        border-color: #27ae60;
+        box-shadow: 0 0 0 0.2rem rgba(39, 174, 96, 0.25);
+    }
+    
+    .form-label {
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 8px;
+    }
+    
+    textarea.form-control {
+        resize: vertical;
+        min-height: 80px;
+        max-height: 120px;
+    }
+</style>
 {% endblock %}

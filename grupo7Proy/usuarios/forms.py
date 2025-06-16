@@ -7,7 +7,7 @@ class RegistroUsuarioForm(UserCreationForm):
     last_name = forms.CharField(max_length=30, required=True, label='Apellido')
     email = forms.EmailField(required=True)
     telefono = forms.CharField(max_length=15, required=False)
-    direccion = forms.CharField(widget=forms.Textarea(attrs={'rows': 3}), required=False)
+    direccion = forms.CharField(widget=forms.Textarea(attrs={'rows': 1}), required=False)
     
     class Meta:
         model = Usuario
