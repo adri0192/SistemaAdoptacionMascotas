@@ -48,41 +48,6 @@ class Command(BaseCommand):
         else:
             self.stdout.write(self.style.WARNING('✓ Usuario adoptante ya existe'))
 
-        # Crear mascotas de ejemplo
-        mascotas_data = [
-            {
-                'nombre': 'Max',
-                'especie': 'perro',
-                'raza': 'Labrador',
-                'edad': 3,
-                'sexo': 'macho',
-                'estado_adopcion': 'disponible'
-            },
-            {
-                'nombre': 'Luna',
-                'especie': 'gato',
-                'raza': 'Siamés',
-                'edad': 2,
-                'sexo': 'hembra',
-                'estado_adopcion': 'disponible'
-            },
-            {
-                'nombre': 'Rocky',
-                'especie': 'perro',
-                'raza': 'Pastor Alemán',
-                'edad': 5,
-                'sexo': 'macho',
-                'estado_adopcion': 'disponible'
-            },
-            {
-                'nombre': 'Mimi',
-                'especie': 'gato',
-                'raza': 'Persa',
-                'edad': 1,
-                'sexo': 'hembra',
-                'estado_adopcion': 'disponible'
-            }
-        ]
 
         for mascota_data in mascotas_data:
             mascota, created = Mascota.objects.get_or_create(
