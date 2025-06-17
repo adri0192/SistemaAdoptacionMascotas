@@ -3,6 +3,14 @@
   <img src="static/img/adopta.jpeg">
 </h1>
 
+## Acceso para evaluación 
+  ### ROL: ADMIN
+- **Usuario**: admin1
+- **Contraseña**: admin123
+  ### ROL: ADOPTANTE
+- **Usuario**: andy
+- **Contraseña**: andy2003
+
 ## Descripción
 
 Sistema de Adopción de Mascotas es una aplicación web desarrollada con Django que permite gestionar el proceso de adopción de mascotas. La plataforma facilita la conexión entre personas que desean adoptar y mascotas que necesitan un hogar, además de proporcionar herramientas para la gestión de historiales médicos y solicitudes de adopción.
